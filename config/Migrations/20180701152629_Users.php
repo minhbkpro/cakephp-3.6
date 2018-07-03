@@ -3,6 +3,8 @@ use Migrations\AbstractMigration;
 
 class Users extends AbstractMigration
 {
+    public $autoId = false;
+
     /**
      * Change Method.
      *
@@ -13,37 +15,50 @@ class Users extends AbstractMigration
     public function change()
     {
         $table = $this->table('users');
-        $table->addColumn('username', 'string', [
-            'default' => null,
-            'null' => false,
+        $table->addColumn('id', 'integer', [
+            'autoIncrement' => true,
+            'signed' => false
         ]);
-        $table->addColumn('password', 'string', [
-            'default' => null,
-            'null' => false,
-        ]);
+        $table->addPrimaryKey('id');
+        $table->addColumn('username', 'string');
+        $table->addColumn('password', 'string');
         $table->addColumn('name', 'string', [
-            'default' => null,
             'null' => true,
+            'default' => null
         ]);
-        $table->addColumn('created_at', 'datetime', [
+        $table->addColumn('birthdate', 'date', [
+            'null' => true,
+            'default' => null
+        ]);
+        $table->addColumn('gender', 'integer', [
+            'null' => true,
             'default' => null,
-            'null' => false,
+            'limit' => 1
         ]);
+        $table->addColumn('address', 'string', [
+            'null' => true,
+            'default' => null
+        ]);
+        $table->addColumn('avatar', 'string', [
+            'null' => true,
+            'default' => null
+        ]);
+        $table->addColumn('created_at', 'datetime');
         $table->addColumn('created_by', 'integer', [
-            'default' => null,
-            'null' => false,
+            'signed' => false
         ]);
         $table->addColumn('updated_at', 'datetime', [
-            'default' => null,
             'null' => true,
+            'default' => null
         ]);
         $table->addColumn('updated_by', 'integer', [
-            'default' => null,
             'null' => true,
+            'default' => null,
+            'signed' => false
         ]);
         $table->addColumn('deleted_at', 'datetime', [
-            'default' => null,
             'null' => true,
+            'default' => null
         ]);
         $table->create();
     }
