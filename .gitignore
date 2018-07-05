@@ -39,3 +39,5 @@ nbproject/*
 # Sass preprocessor
 .sass-cache/
 mysql
+docker-compose.yml
+docker
