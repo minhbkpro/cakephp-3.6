@@ -1,3 +1,0 @@
-[submodule "docker-nginx-php-mysql"]
-	path = docker-nginx-php-mysql
-	url = https://github.com/minhbkpro/docker-nginx-php-mysql.git
